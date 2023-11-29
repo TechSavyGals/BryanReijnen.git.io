@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Riddle</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4caf50;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #111;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #riddle {
+            border-bottom: 2px solid #4caf50;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        #answer {
+            display: none;
+            font-weight: bold;
+        }
+
+        #answer.visible {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solve The Riddle</h1>
+    <p id="riddle"></p>
+    <button onclick="getRiddle()">Get Riddle</button>
+    <p id="answer"></p>
+    <button onclick="getAnswer()">Get Answer</button>
+
+    <script>
+        async function getRiddle() {
+            const response = await fetch('https://riddles-api.vercel.app/random');
+            const data = await response.json();
+            document.getElementById('riddle').innerHTML = data.riddle;
+            document.getElementById('answer').innerHTML = data.answer;
+            document.getElementById('answer').classList.remove('visible'); // Hide answer when getting new riddle
+        }
+
+        function getAnswer() {
+            document.getElementById('answer').classList.add('visible');
+        }
+    </script>
+</body>
+</html>

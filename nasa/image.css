@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+   }
+   
+   img {
+    display: block;
+    max-width: 500px; /* changed from 100% to 500px */
+    height: auto;
+    margin: 0 auto;
+   }
+   
+   p {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: justify;
+   }
+   h1{
+    text-align: center;
+   }
